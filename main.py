@@ -6,7 +6,6 @@ DocumentCloud plugin system and run using Github Actions.  It receives data
 from DocumentCloud via the request dispatch and writes data back to
 DocumentCloud using the standard API
 """
-
 from addon import AddOn
 
 
@@ -39,7 +38,7 @@ class HelloWorld(AddOn):
             self.upload_file(file_)
 
         self.set_message("Hello World end!")
-        self.send_mail("Hello World!", "We finished!")
+        # self.send_mail("Hello World!", "We finished!")
 
 
 if __name__ == "__main__":
