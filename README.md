@@ -1,9 +1,7 @@
 
-# DocumentCloud Add-On Example
+# DocumentCloud Add-On - Metadata Scraper
 
-This repository contains an example Add-On for DocumentCloud.  It is designed
-to be forked and modified to allow one to easily write Add-Ons to bring custom
-functionality to DocumentCloud.
+This repository contains a metadata scraper Add-On for DocumentCloud. 
 
 ## Files
 
@@ -65,16 +63,8 @@ There are also some methods which provide useful functionality for an Add-On.
 
 ### main.py
 
-This is the file to edit to implement your Add-On specific functionality.  You
-should define a class which inherits from `AddOn` from `addon.py`.  Then you
-can instantiate a new instance and call the main method, which is the entry
-point for your Add-On logic.  You may access the data parsed by `AddOn` as well
-as using the helper methods defined there.  The `HelloWorld` example Add-On
-demonstrates using many of these features.
-
-If you need to add more files, remember to instantiate the main Add-On class
-from a file called `main.py` - that is what the GitHub action will call with
-the Add-On parameters upon being dispatched.
+This is the file that implements the metadata scraping Add-On specific functionality.
+It contains the class `MetadataScrape` which inherits from `AddOn` from `addon.py`.  
 
 ### requirements.txt
 

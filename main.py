@@ -9,7 +9,7 @@ DocumentCloud using the standard API
 from addon import AddOn
 
 
-class HelloWorld(AddOn):
+class MetadaScrape(AddOn):
     """An example Add-On for DocumentCloud."""
 
     def main(self):
@@ -42,4 +42,4 @@ class HelloWorld(AddOn):
 
 
 if __name__ == "__main__":
-    HelloWorld().main()
+    MetadaScrape().main()
