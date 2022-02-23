@@ -1,5 +1,5 @@
 """
-This is a hello world plugin for DocumentCloud.
+This is a metadata scraping plugin for DocumentCloud.
 
 It demonstrates how to write a plugin which can be activated from the
 DocumentCloud plugin system and run using Github Actions.  It receives data
@@ -7,6 +7,7 @@ from DocumentCloud via the request dispatch and writes data back to
 DocumentCloud using the standard API
 """
 from addon import AddOn
+import csv
 
 
 class MetadaScrape(AddOn):
@@ -17,27 +18,46 @@ class MetadaScrape(AddOn):
         # fetch your plugin specific data
         name = self.data.get("name", "world")
 
-        self.set_message("Hello World start!")
+        self.set_message("Beginning metadata scraping!")
 
-        # add a hello note to the first page of each selected document
+        # preset header + metadata list
+        header = ['id', 'title', 'privacy level', 'canon-url', 
+        'contributor', 'created at', 'description' ,'full text url', 'pdf url',
+        'page count', 'Tags + Key Value Pairs']
+        metadata_list = [] # list o lists containing metadata for each document
+
+        # retrieve information from each document.
         if self.documents:
             length = len(self.documents)
             for i, doc_id in enumerate(self.documents):
                 self.set_progress(100 * i // length)
-                document = self.client.documents.get(doc_id)
-                document.annotations.create(f"Hello {name}!", 0)
+                doc = self.client.documents.get(doc_id)
+                doc_metadata = [doc.id, doc.title, doc.access, doc.canonical_url,
+                doc.contributor, doc.created_at, doc.description, doc.full_text_url,
+                doc.pdf_url, doc.page_count, doc.data]
+                metadata_list.append(doc_metadata)
         elif self.query:
             documents = self.client.documents.search(self.query)
             length = len(documents)
-            for i, document in enumerate(documents):
+            for i, doc in enumerate(documents):
                 self.set_progress(100 * i // length)
-                document.annotations.create(f"Hello {name}!", 0)
+                doc_metadata = [doc.id, doc.title, doc.access, doc.asset_url,
+                doc.contributor, doc.created_at, doc.description, doc.full_text_url,
+                doc.pdf_url, doc.page_count, doc.data]
+                metadata_list.append(doc_metadata)
 
-        with open("hello.txt", "w+") as file_:
-            file_.write("Hello world!")
+        # using the length variable to try and avoid overwriting files if possible.
+        # potentially revisit this to ensure we arent overwriting locally. 
+        with open("document_metadata"+str(length)+".csv", "w+") as file_:
+            writer = csv.writer(file_)
+            writer.writerow(header)
+
+            for row in metadata_list:
+                writer.writerow(row)
+            
             self.upload_file(file_)
 
-        self.set_message("Hello World end!")
+        self.set_message("Metadata scraping end!")
         # self.send_mail("Hello World!", "We finished!")
 
 
