@@ -1,8 +1,8 @@
 """
 This is a metadata scraping plugin for DocumentCloud.
 
-It demonstrates how to write a plugin which can be activated from the
-DocumentCloud plugin system and run using Github Actions.  It receives data
+It demonstrates how to write a add-on which can be activated from the
+DocumentCloud add-on system and run using Github Actions.  It receives data
 from DocumentCloud via the request dispatch and writes data back to
 DocumentCloud using the standard API
 """
@@ -11,11 +11,11 @@ import csv
 
 
 class MetadaScrape(AddOn):
-    """An example Add-On for DocumentCloud."""
+    """An metadata scraping Add-On for DocumentCloud."""
 
     def main(self):
-        """The main plugin functionality goes here."""
-        # fetch your plugin specific data
+        """The main add-on functionality goes here."""
+        # fetch your add-on specific data
         name = self.data.get("name", "world")
 
         self.set_message("Beginning metadata scraping!")
