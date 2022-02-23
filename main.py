@@ -21,7 +21,7 @@ class MetadaScrape(AddOn):
         self.set_message("Beginning metadata scraping!")
 
         # preset header + metadata list
-        header = ['id', 'title', 'privacy level', 'canon-url', 
+        header = ['id', 'title', 'privacy level', 'asset-url', 
         'contributor', 'created at', 'description' ,'full text url', 'pdf url',
         'page count', 'Tags + Key Value Pairs']
         metadata_list = [] # list o lists containing metadata for each document

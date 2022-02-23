@@ -64,7 +64,12 @@ There are also some methods which provide useful functionality for an Add-On.
 ### main.py
 
 This is the file that implements the metadata scraping Add-On specific functionality.
-It contains the class `MetadataScrape` which inherits from `AddOn` from `addon.py`.  
+It contains the class `MetadataScrape` which inherits from `AddOn` from `addon.py`.
+
+TODO: 
+- currently will break if doc.description is not previously set - fix this case.
+- had issues with the 'canonical url' field. currently have it just using asset url instead.
+- Consider breaking the tags + key val pairs into different sections after accessing the .data field.
 
 ### requirements.txt
 
