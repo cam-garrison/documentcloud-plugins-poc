@@ -22,7 +22,7 @@ class MetadaScrape(AddOn):
 
         # preset header + metadata list
         header = ['id', 'title', 'privacy level', 'asset-url', 
-        'contributor', 'created at', 'description' ,'full text url', 'pdf url',
+        'contributor', 'created at date', 'description' ,'full text url', 'pdf url',
         'page count', 'Tags + Key Value Pairs']
         metadata_list = [] # list o lists containing metadata for each document
 
