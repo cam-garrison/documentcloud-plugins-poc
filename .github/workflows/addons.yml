@@ -1,10 +1,9 @@
 
-name: Plugins Proof of Concept
-
+name: Add-On
 on: repository_dispatch
 
 jobs:
-  Run-Plugin:
+  Run-Add-On:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:

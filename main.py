@@ -37,7 +37,7 @@ class MetadaScrape(AddOn):
                 doc.pdf_url, doc.page_count, doc.data]
                 metadata_list.append(doc_metadata)
         elif self.query:
-            documents = self.client.documents.search(self.query)
+            documents = self.client.documents.search(self.query)[:3]
             length = len(documents)
             for i, doc in enumerate(documents):
                 self.set_progress(100 * i // length)

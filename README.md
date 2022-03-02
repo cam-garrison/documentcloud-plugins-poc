@@ -11,7 +11,8 @@ This file contains a base class `AddOn`, which implements shared functionality
 for all DocumentCloud Add-Ons to use.  In most cases, you should not need to
 edit this file.  You will subclass this class in `main.py`.
 
-Upon initializing this class, it parses the JSON passed in as an argument, and populates a number of member variables.
+Upon initializing this class, it parses the JSON passed in as an argument, and
+populates a number of member variables.
 
 * `client` - A DocumentCloud client.  This is a python library
   (https://github.com/MuckRock/python-documentcloud) allowing easy access to
@@ -51,7 +52,8 @@ There are also some methods which provide useful functionality for an Add-On.
   This will be presented to the user for download.  This is useful for Add-Ons
   which want to return data such as a CSV file or other exports of data to the
   user.  It is currently limited to one file per run, so please ZIP your files
-  if you need to return more than one.
+  if you need to return more than one.  The file will be available for download
+  for five days, after which it will be permanently deleted from the server.
 
 * `send_mail(self, subject, content)` - This is used to email yourself at the
   email address associated with your DocumentCloud account.  This can be used
@@ -96,7 +98,7 @@ Example invocation:
 python test_addon.py --documents 123 --params '{"name": "World"}'
 ```
 
-### .github/workflows/plugin.yml
+### .github/workflows/addons.yml
 
 This is the GitHub Actions configuration file.  We have a very simple workflow
 defined, which sets up python, installes dependencies and runs the `main.py` to
@@ -106,7 +108,7 @@ in place, which uses the UUID as its name, to allow DocumentCloud to identify
 the run.
 
 It would be possible to make a similar workflow for other programming languages
-if one wanted to write Add-Ons in a language besides python.
+if one wanted to write Add-Ons in a language besides Python.
 
 ## Reference
 
@@ -115,10 +117,11 @@ if one wanted to write Add-Ons in a language besides python.
 This is a reference of all of the data passed in to the Add-On.  A single JSON
 object is passed in to `main.py` as a quoted string.  The `init` and
 `load_params` functions parse this out and convert it to useful python objects
-for your `main` function to use.  The following are the top level keys in the object.
+for your `main` function to use.  The following are the top level keys in the
+object.
 
 * `token` - An access token which will be valid for 5 minutes, giving you API
-  access authorized as the user who activated the plugin.  The `init` function
+  access authorized as the user who activated the add-on.  The `init` function
   uses this value to configure the DocumentCloud client object.
 
 * `base_uri` - This can be used to point the API server to other instances,
