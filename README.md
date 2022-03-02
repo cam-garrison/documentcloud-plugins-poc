@@ -72,6 +72,7 @@ TODO:
 - currently will break if doc.description is not previously set - fix this case.
 - had issues with the 'canonical url' field. currently have it just using asset url instead.
 - Consider breaking the tags + key val pairs into different sections after accessing the .data field.
+- Currently requires the params json attribute to be passed into it to work locally - check this out??
 
 ### requirements.txt
 
