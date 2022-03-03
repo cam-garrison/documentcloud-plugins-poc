@@ -69,10 +69,10 @@ This is the file that implements the metadata scraping Add-On specific functiona
 It contains the class `MetadataScrape` which inherits from `AddOn` from `addon.py`.
 
 TODO: 
-- currently will break if doc.description is not previously set - fix this case.
-- had issues with the 'canonical url' field. currently have it just using asset url instead.
-- Consider breaking the tags + key val pairs into different sections after accessing the .data field.
-- Currently requires the params json attribute to be passed into it to work locally - check this out??
+- currently will break if doc.description is not previously set - fix this case. (FINISHED)
+- had issues with the 'canonical url' field. currently have it just using asset url instead. (FINISHED)
+- Consider breaking the tags + key val pairs into different sections after accessing the .data field. (FINISHED)
+- Currently requires the params json attribute to be passed into it to work locally - check this out?? (FINISHED)
 
 ### requirements.txt
 

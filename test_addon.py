@@ -58,7 +58,7 @@ def test():
             "query": args.query,
             "user": user.id,
             "organization": user.organization,
-            "data": json.loads(args.params),
+            #"data": json.loads(args.params),
         }
     )
 
